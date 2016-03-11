@@ -1,7 +1,10 @@
-public enum PlayerSectionType
+namespace com.github.dergash.h3msharp
 {
-    Default,
-    OnlyTown,
-    OnlyHero,
-    TownAndHero
+    public enum PlayerSectionType
+    {
+        Default,
+        OnlyTown,
+        OnlyHero,
+        TownAndHero
+    }
 }

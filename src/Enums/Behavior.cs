@@ -1,7 +1,10 @@
-public enum Behavior
+namespace com.github.dergash.h3msharp
 {
-    Random = 0,
-    Warrior = 1,
-    Builder = 2,
-    Explorer = 3
+    public enum Behavior
+    {
+        Random = 0,
+        Warrior = 1,
+        Builder = 2,
+        Explorer = 3
+    }
 }
