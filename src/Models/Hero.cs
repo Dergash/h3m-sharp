@@ -1,33 +1,37 @@
 using System;
-public class Hero
+
+namespace com.github.dergash.h3msharp
 {
-    public Boolean IsRandom;
-    public Int32 Id;
-    public HeroClass Class;
-    public Int32 Portrait;
-    public Int32 NameSize;
-    public String _name;
-    
-    public String Name
+    public class Hero
     {
-        get
+        public Boolean IsRandom;
+        public Int32 Id;
+        public HeroClass Class;
+        public Int32 Portrait;
+        public Int32 NameSize;
+        public String _name;
+
+        public String Name
         {
-            if(NameSize == 0)
+            get
             {
-                return "Default";
+                if (NameSize == 0)
+                {
+                    return "Default";
+                }
+                return _name;
             }
-            return _name;
-        }
-        set
-        {
-            if(value.Length > 12)
+            set
             {
-                throw new ArgumentOutOfRangeException("Hero name limited to 12 chars");
-            }
-            else
-            {
-                _name = value;
-                NameSize = _name.Length;
+                if (value.Length > 12)
+                {
+                    throw new ArgumentOutOfRangeException("Hero name limited to 12 chars");
+                }
+                else
+                {
+                    _name = value;
+                    NameSize = _name.Length;
+                }
             }
         }
     }
