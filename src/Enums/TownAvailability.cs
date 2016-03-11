@@ -1,4 +1,3 @@
-
 public enum TownAvailability
 {
     None = 0,

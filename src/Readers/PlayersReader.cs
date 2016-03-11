@@ -31,8 +31,8 @@ public class PlayersReader
         var Result = new Player();
         this.StartOffset += Offset;
         
-        Console.WriteLine("Section start address: " + (StartOffset).ToString("X2"));
-        Console.WriteLine("Section start byte: " + Source[StartOffset].ToString("X2"));
+        //Console.WriteLine("Section start address: " + (StartOffset).ToString("X2"));
+        //Console.WriteLine("Section start byte: " + Source[StartOffset].ToString("X2"));
         Result.Color = Color;
         Result.AllowedForHuman = Reader.ReadBoolean(StartOffset + AllowedForHumanOffest, Source);
         Result.AllowedForComputer = Reader.ReadBoolean(StartOffset + AllowedForComputerOffset, Source);

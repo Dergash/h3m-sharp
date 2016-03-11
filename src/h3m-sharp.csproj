@@ -7,17 +7,18 @@
     <ProjectGuid>{33878502-44E0-4302-A2B1-AFA6C33A2215}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HLIB</RootNamespace>
-    <AssemblyName>HLIB</AssemblyName>
+    <RootNamespace>com.github.dergash.h3msharp</RootNamespace>
+    <AssemblyName>h3m-sharp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <BaseIntermediateOutputPath>..\BUILD\VS\</BaseIntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\BUILD\VS\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\BUILD\VS\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,30 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Hero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\Hero.cs" />
-    <Compile Include="src\Main.cs" />
-    <Compile Include="src\Map\BinaryReader.cs" />
-    <Compile Include="src\Map\Coordinate.cs" />
-    <Compile Include="src\Map\Enums\Artifact.cs" />
-    <Compile Include="src\Map\Enums\Behavior.cs" />
-    <Compile Include="src\Map\Enums\Color.cs" />
-    <Compile Include="src\Map\Enums\Difficulty.cs" />
-    <Compile Include="src\Map\Enums\HeroClass.cs" />
-    <Compile Include="src\Map\Enums\PlayerSectionType.cs" />
-    <Compile Include="src\Map\Enums\TownAvailability.cs" />
-    <Compile Include="src\Map\Enums\Version.cs" />
-    <Compile Include="src\Map\Map.cs" />
-    <Compile Include="src\Map\Readers\HeaderReader.cs" />
-    <Compile Include="src\Map\Readers\PlayersReader.cs" />
-    <Compile Include="src\Map\Sections\Player.cs" />
+    <Compile Include="Readers\BinaryReader.cs" />
+    <Compile Include="Models\Coordinate.cs" />
+    <Compile Include="Enums\Artifact.cs" />
+    <Compile Include="Enums\Behavior.cs" />
+    <Compile Include="Enums\Color.cs" />
+    <Compile Include="Enums\Difficulty.cs" />
+    <Compile Include="Enums\HeroClass.cs" />
+    <Compile Include="Enums\PlayerSectionType.cs" />
+    <Compile Include="Enums\TownAvailability.cs" />
+    <Compile Include="Enums\Version.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="Readers\HeaderReader.cs" />
+    <Compile Include="Readers\PlayersReader.cs" />
+    <Compile Include="Models\Player.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Campaign\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
