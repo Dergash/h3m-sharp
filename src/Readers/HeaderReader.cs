@@ -59,11 +59,6 @@ namespace com.github.dergash.h3msharp
             DifficultyOffset = DescriptionOffset + DescriptionSize;
             HeaderSize = DifficultyOffset + 1;
         }
-        public Version GetVersion()
-        {
-            var Result = Reader.ReadInt32(VersionOffset, Source);
-            return (Version)Result;
-        }
 
         public Int32 GetMapSize()
         {

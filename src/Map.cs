@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 
 namespace com.github.dergash.h3msharp
 { 
@@ -28,31 +30,65 @@ namespace com.github.dergash.h3msharp
         }
         public Map(byte[] Source)
         {
-            this.Parse(Source);
+            this.Version = GetVersion(Source[0]);
+            Byte[] UnpackedSource;
+            if(this.Version == Version.Unknown)
+            {
+                UnpackedSource = Unpack(Source);
+            }
+            else
+            {
+                UnpackedSource = Source;
+            }
+            GetHeader(UnpackedSource);
         }
-    
-        private void Parse(byte[] Source)
+
+        public Version GetVersion(Byte VersionCode)
         {
-            try
+            switch (VersionCode)
             {
-                GetHeader(Source);
-                GetPlayers(Source,HeaderSize);
+                case (Int32)Version.ROE: break;
+                case (Int32)Version.AB: break;
+                case (Int32)Version.SOD: break;
+                case (Int32)Version.CHR: break;
+                case (Int32)Version.HOTA: break;
+                case (Int32)Version.WOG: break;
+                default: return Version.Unknown;
             }
-            catch(BinaryReader.MapFormatException e)
+            return (Version)VersionCode;
+        }
+
+        public Byte[] Unpack(Byte[] PackedMap)
+        {
+            Byte[] Result;
+            using (var InStream = new MemoryStream(PackedMap))
             {
-                Console.WriteLine("\nInvalid value occured while reading offset: " + e.ErrorOffset.ToString());
-                Console.WriteLine("\n Value encountered: " + BitConverter.ToString(e.ErrorValue));
+                using (var OutStream = new MemoryStream())
+                {
+                    using (var GZipStream = new GZipStream(InStream, CompressionMode.Decompress))
+                    {
+                        int CurrentByte;
+                        do
+                        {
+                            CurrentByte = GZipStream.ReadByte();
+                            OutStream.WriteByte((Byte)CurrentByte);
+                        }
+                        while (CurrentByte != -1);
+                    }
+                    Result = OutStream.ToArray();
+                }
             }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            return Result;
+        } 
+
+        public void Parse(byte[] Source)
+        {
+            GetPlayers(Source,HeaderSize);
         }
            
         private void GetHeader(Byte[] Source)
         {
             var HReader = new HeaderReader(Source); 
-            this.Version = HReader.GetVersion();
             this.IsHeroPresent = HReader.GetIsHeroPresent();
             this.Size = new Coordinate(HReader.GetMapSize(), HReader.GetHasSubterrain());
             this.Name = HReader.GetName();
