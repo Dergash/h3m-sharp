@@ -19,6 +19,9 @@ namespace com.github.dergash.h3msharp
             {
                 this.ErrorOffset = Offset;
                 this.ErrorValue = Value;
+                String ErrMsg = "Invalid value occured while reading offset: " + "0x" + Offset.ToString("X8");
+                ErrMsg += " Value encountered: " + "0x" + Value[0].ToString("X4");
+                throw new MapFormatException(ErrMsg, this);
             }
             public MapFormatException(string message) : base(message) { }
             public MapFormatException(string message, System.Exception inner) : base(message, inner) { }

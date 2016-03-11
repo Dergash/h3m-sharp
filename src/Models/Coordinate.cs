@@ -4,20 +4,20 @@ namespace com.github.dergash.h3msharp
 {
     public class Coordinate
     {
-        public Int32 X;
-        public Int32 Y;
+        public UInt32 X;
+        public UInt32 Y;
         public Boolean Z;
 
         public Coordinate(Int32 X, Int32 Y, Boolean Z)
         {
-            this.X = X;
-            this.Y = Y;
+            this.X = (UInt32)X;
+            this.Y = (UInt32)Y;
             this.Z = Z;
         }
         public Coordinate(Int32 Size, Boolean HasSubterrain)
         {
-            this.X = Size;
-            this.Y = Size;
+            this.X = (UInt32)Size;
+            this.Y = (UInt32)Size;
             this.Z = HasSubterrain;
         }
 
